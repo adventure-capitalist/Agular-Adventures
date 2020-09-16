@@ -1,0 +1,57 @@
+<html>
+<div class="container">
+  <h1>Customer Data</h1>
+  <input (change)="sortRows()" placeholder="Search for a name..." type="text" id="myInput"/>
+  <select (change)="filterByContract()" id="statusFilter">
+    <option value="" selected>Filter Status Type...</option>
+    <option value="Has a Contract">Has a Contract</option>
+    <option value="New Enquiry">New Enquiry</option>
+ </select>
+ <select (change)="filterByPayment()" id="paymentFilter">
+  <option value="" selected>Filter Payment Type...</option>
+  <option value="Direct Debit">Direct Debit</option>
+  <option value="Cheque">Cheque</option>
+  <option value="Cheque">Visa</option>
+</select>
+  <table id="myTable">
+    <thead>
+        <tr>
+          <th class="tableHeader" *ngFor="let col of tableHeaders" (click)="sort(col.value)">{{col.propertyName}}<i class="icon-sort-desc"></i></th>
+        </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let customer of customers">
+      <tr (click)="customer.expanded = !customer.expanded">
+        <td>{{ customer.customernumber }}</td>
+        <td>{{ customer.fullname }}</td>
+        <td>{{ customer.theStatus }}</td>
+        <td>{{ customer.paymentType }}</td>
+        <td>{{ customer.firstcontact }}</td>
+      </tr>
+      <ng-container *ngIf="customer.expanded">
+        <tr>
+          <td>
+              Main Address:
+              <br/>
+              Site Name: 
+              <br/>
+              Phone:
+              <br/>
+              Unit list:
+          </td>
+          <td>
+            {{ customer.theMainAddress }}
+            <br/>
+              {{ customer.sitename}}
+            <br/>
+              {{ customer.phone }}
+            <br/>
+              {{ customer.unitlist || "N/A" }} 
+          </td>
+        </tr>
+      </ng-container>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
+</html>

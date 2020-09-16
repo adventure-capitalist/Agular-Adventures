@@ -1,0 +1,26 @@
+body {
+    font: 12px arial, helvetica, sans-serif;
+}
+h2 {
+    font-size: 16px;
+}
+table {
+    margin: 20px 0;
+    border-collapse:collapse;
+}
+th,td {
+    border: 1px solid #ccc;
+    padding: 2px;
+}
+
+.icon-sort-desc {
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-color: transparent;
+    cursor: pointer;
+    border-width: 8px 4px 0;
+    border-top-color: #444444;
+  }
+  
